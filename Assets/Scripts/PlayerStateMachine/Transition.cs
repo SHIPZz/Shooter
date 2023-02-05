@@ -2,11 +2,10 @@ using UnityEngine;
 
 public abstract class Transition : MonoBehaviour
 {
-    private void Start()
-    {
-    }
+   [SerializeField]  private State _targetState;
 
-    private void Update()
-    {
-    }
+    public State TargetState => _targetState;
+
+    public bool NeedTransit { get; private set; }
+
 }
