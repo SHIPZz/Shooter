@@ -3,21 +3,19 @@ using UnityEngine;
 [RequireComponent(typeof(Player))]
 public class PlayerStateMachine : MonoBehaviour
 {
-    [SerializeField] private State initialState;
+    [SerializeField] private State _initialState;
 
     private State _currentState;
 
-    public State CurrentState => _currentState;
-
     private void Start()
     {
+        Transit(_initialState);
     }
 
     private void Update()
     {
-        if (CurrentState == null)
-            return;
-            
+        if (_currentState.NeedTransit)
+            Transit(_currentState.NeededState);           
     }
 
     public void Reset(State initialState)

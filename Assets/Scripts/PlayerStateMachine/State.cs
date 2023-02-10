@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-   [SerializeField] private List<Transition> _transitions = new List<Transition>();
+    [SerializeField] private List<Transition> _transitions = new List<Transition>();
 
     public bool NeedTransit { get; private set; }
     public State NeededState { get; private set; }
@@ -11,7 +11,14 @@ public abstract class State : MonoBehaviour
 
     private void Update()
     {
-
+        foreach(var transition in _transitions)
+        {
+            if(transition.NeedTransit)
+            {
+                NeedTransit = true;
+                NeededState = transition.TargetState;
+            }
+        }
     }
 
     public void Exit()

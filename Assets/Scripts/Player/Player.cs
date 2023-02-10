@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,29 +10,22 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int _health;
 
-    public event UnityAction<int> HealthChanged;
+    public event Action<int> HealthChanged;
     private Animator _animator;
 
-    private void Start()
+    private void Awake()
     {
-        _animator= GetComponent<Animator>();
-    }
-
-    private void Update()
-    {
-
+        _animator = GetComponent<Animator>();
     }
 
     public void TakeDamage(int damage)
     {
-        _health = Mathf.Clamp(_health, MinHealth, MaxHealth);
+        _health = Mathf.Clamp(_health - damage, MinHealth, MaxHealth);
 
-        _health -= damage;
-
-        HealthChanged?.Invoke(_health);
-        
-        if(_health <= 0)
+        if (_health <= 0)
+        {
+            HealthChanged?.Invoke(_health);
             Destroy(gameObject);
+        }
     }
-
 }

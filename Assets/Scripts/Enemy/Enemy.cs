@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int _health;
 
-    // Update is called once per frame
-    void Update()
+    private readonly int _maxHealth = 100;
+    private readonly int _minHealth = 0;
+
+    public int Health => _health;
+
+    public event Action<int, Vector3> OnHealthChanged;
+
+    public void TakeDamage(int damage, Vector3 direction)
     {
-        
+        _health = Mathf.Clamp(_health - damage, _minHealth, _maxHealth);
+
+        if (_health == 0)
+        {
+            Destroy(gameObject);
+            OnHealthChanged?.Invoke(_health, direction);
+        }
     }
 }
