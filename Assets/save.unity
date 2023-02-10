@@ -261,8 +261,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67768284}
-  m_LocalRotation: {x: 0.13208883, y: 0.000000035161055, z: -0.0000000046854365, w: 0.9912379}
-  m_LocalPosition: {x: 18.230675, y: 2.5751991, z: 5.484358}
+  m_LocalRotation: {x: 0.13208881, y: -0.000000035161055, z: 0.0000000046854365, w: 0.99123794}
+  m_LocalPosition: {x: 18.230675, y: 2.5751991, z: 5.4843583}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -759,6 +759,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2080ac6270ca25418477fdac833f7ca, type: 3}
+--- !u!1 &273519005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 38259557712057442, guid: a2080ac6270ca25418477fdac833f7ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 273519004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &273519006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273519005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e0158a99adcb1469418dddb543475a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Wellness>k__BackingField: 10000
 --- !u!1 &338699273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,7 +1541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35c280193f1dff49a9d86bf563d2837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
 --- !u!1 &875205896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,7 +1862,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054976624}
-  m_LocalRotation: {x: 0.13208881, y: 0.000000019068759, z: -0.0000000025410352, w: 0.9912379}
+  m_LocalRotation: {x: 0.13208881, y: -0.000000019068759, z: 0.0000000025410352, w: 0.9912379}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3063,7 +3081,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716137760}
-  m_LocalRotation: {x: 0.15009706, y: 0.00000001901938, z: -0.0000000028874645, w: 0.9886713}
+  m_LocalRotation: {x: 0.15009706, y: 0.000000019019383, z: -0.000000002887465, w: 0.9886713}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3203,6 +3221,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5924302261470907932, guid: 68e38963a24dd7c429069a5a37856b0a,
+        type: 3}
+      propertyPath: <Wellness>k__BackingField
+      value: 20000
+      objectReference: {fileID: 0}
     - target: {fileID: 8666879055669412709, guid: 68e38963a24dd7c429069a5a37856b0a,
         type: 3}
       propertyPath: m_RootOrder

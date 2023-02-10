@@ -1,25 +1,26 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int _health;
+    private Health _health;
 
-    private readonly int _maxHealth = 100;
-    private readonly int _minHealth = 0;
+    public event Action<int> OnHealthChanged;
 
-    public int Health => _health;
-
-    public event Action<int, Vector3> OnHealthChanged;
-
-    public void TakeDamage(int damage, Vector3 direction)
+    private void Awake()
     {
-        _health = Mathf.Clamp(_health - damage, _minHealth, _maxHealth);
+        _health= GetComponent<Health>();
+    }
 
-        if (_health == 0)
+    public void TakeDamage(int damage)
+    {
+        _health.Decrease(damage);
+
+        if (_health.Wellness == 0)
         {
             Destroy(gameObject);
-            OnHealthChanged?.Invoke(_health, direction);
+            OnHealthChanged?.Invoke(_health.Wellness);
         }
     }
 }

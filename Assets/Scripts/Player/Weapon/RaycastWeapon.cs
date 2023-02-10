@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.AI;
 
 public class RaycastWeapon : MonoBehaviour
 {
@@ -17,6 +15,7 @@ public class RaycastWeapon : MonoBehaviour
     [SerializeField] private Transform _raycastDestination;
     [SerializeField] private float _bulletSpeed = 1000.0f;
     [SerializeField] private float _bulletDrop = 0.0f;
+
     [field: SerializeField] public AnimationClip WeaponAnimation { get; private set; }
     [field: SerializeField] public int Damage { get; private set; }
 
@@ -92,7 +91,7 @@ public class RaycastWeapon : MonoBehaviour
 
             if (hitBox is not null)
             {
-                hitBox.TakeDamage(Damage, _ray.direction);
+                hitBox.TakeDamage(Damage);
             }
         }
     }

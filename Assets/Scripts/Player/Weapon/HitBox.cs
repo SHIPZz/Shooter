@@ -4,9 +4,9 @@ public class HitBox : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy;
 
-    public void OnRaycastHit(int damage, Vector3 direction)
+    public void OnRaycastHit(int damage)
     {
-        _enemy.TakeDamage(damage, direction);
+        _enemy.TakeDamage(damage);
     }
 
     private void OnEnable()

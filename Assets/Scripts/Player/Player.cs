@@ -1,30 +1,26 @@
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator), typeof(Health))]
 public class Player : MonoBehaviour
 {
-    private const int MinHealth = 0;
-    private const int MaxHealth = 100;
-
-    [SerializeField] private int _health;
-
     public event Action<int> HealthChanged;
     private Animator _animator;
+    private Health _health;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _health = GetComponent<Health>();
     }
 
     public void TakeDamage(int damage)
     {
-        _health = Mathf.Clamp(_health - damage, MinHealth, MaxHealth);
+        _health.Decrease(damage);
 
-        if (_health <= 0)
+        if (_health.Wellness <= 0)
         {
-            HealthChanged?.Invoke(_health);
+            HealthChanged?.Invoke(_health.Wellness);
             Destroy(gameObject);
         }
     }
