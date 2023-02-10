@@ -117,7 +117,7 @@ public class RaycastWeapon : MonoBehaviour
 
     private Bullet CreateBullet(Vector3 position, Vector3 velocity)
     {
-        Bullet bullet = new Bullet();
+        Bullet bullet = new();
         bullet.SetPosition(position);
         bullet.SetVelocity(velocity);
 
