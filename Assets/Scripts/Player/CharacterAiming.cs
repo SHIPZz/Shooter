@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 
 public class CharacterAiming : MonoBehaviour
 {
@@ -7,7 +6,6 @@ public class CharacterAiming : MonoBehaviour
     private const float MaxRigWeight = 1.0f;
 
     [SerializeField] private Camera _mainCamera;
-    [SerializeField] private Rig _aimLayer;
 
     private float _turnSpeed = 15;
     private float _aimDuration = 0.2f;
@@ -30,20 +28,22 @@ public class CharacterAiming : MonoBehaviour
 
     private void Update()
     {
-        _aimLayer.weight = MaxRigWeight;
-
-        if (Input.GetButtonDown(FireOne))
+        if (_weapon != null)
         {
-            _weapon.StartFire();
-        }
-        else if (Input.GetButtonUp(FireOne))
-        {
-            _weapon.StopFire();
+            if (Input.GetButtonDown(FireOne))
+            {
+                _weapon.StartFire();
+            }
+            else if (Input.GetButtonUp(FireOne))
+            {
+                _weapon.StopFire();
+            }
+
+            _weapon.UpdateBullets(Time.deltaTime);
+
+            if (_weapon._IsFired)
+                _weapon.UpdateFire(Time.deltaTime);
         }
 
-        _weapon.UpdateBullets(Time.deltaTime);
-
-        if (_weapon._IsFired)
-            _weapon.UpdateFire(Time.deltaTime);
     }
 }

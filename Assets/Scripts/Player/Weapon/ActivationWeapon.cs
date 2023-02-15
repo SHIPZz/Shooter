@@ -1,25 +1,24 @@
 using UnityEngine;
-using UnityEditor.Animations;
+using Cinemachine;
+using UnityEngine.Animations.Rigging;
 
 public class ActivationWeapon : MonoBehaviour
 {
     private const string FireOne = "Fire1";
-    private const int LayerIndex = 1;
+    private const string IsHolstered = "IsHolstered";
 
     [SerializeField] private Transform _crossHairTarget;
-    [SerializeField] private UnityEngine.Animations.Rigging.Rig _handIk;
+    [SerializeField] private Rig _handIk;
     [SerializeField] private Transform _weaponParent;
     [SerializeField] private Transform _weaponLeftGrip;
     [SerializeField] private Transform _weaponRightGrip;
+    [SerializeField] private Animator _rigController;
+    [SerializeField] private CinemachineFreeLook _playerCamera;
 
     private RaycastWeapon _weapon;
-    private Animator _animator;
-    private AnimatorOverrideController _overrideAnimatorController;
 
     private void Start()
     {
-        _animator = GetComponent<Animator>();
-        _overrideAnimatorController = _animator.runtimeAnimatorController as AnimatorOverrideController;
         RaycastWeapon existingWeapon = GetComponentInChildren<RaycastWeapon>();
 
         if (existingWeapon)
@@ -41,52 +40,33 @@ public class ActivationWeapon : MonoBehaviour
 
             if (_weapon._IsFired)
                 _weapon.UpdateFire(Time.deltaTime);
-        }
-        else
-        {
-            _handIk.weight = 0.0f;
-            _animator.SetLayerWeight(LayerIndex, 0.0f);
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                bool isHolstered = _rigController.GetBool(IsHolstered);
+                _rigController.SetBool(IsHolstered, !isHolstered);
+            }
         }
     }
 
 
     public void EquipWeapon(RaycastWeapon weapon)
     {
-        float weaponPositionX = -0.357f;
-        float weaponPositionY = -0.078f;
-        float weaponPositionZ = 0.378f;
-        float invokeTime = 0.001f;
-        float MaxlayerWeight = 1.0f;
+        float weaponPositionX = -0.41f;
+        float weaponPositionY = 0.032f;
+        float weaponPositionZ = 0.468f;
 
-        if(_weapon)
+        if (_weapon)
             Destroy(_weapon.gameObject);
 
         _weapon = weapon;
         _weapon.SetRaycastDestination(_crossHairTarget);
+        _weapon.Recoil.SetPlayerCamera(_playerCamera);
         _weapon.transform.parent = _weaponParent;
         _weapon.transform.localPosition = new Vector3(weaponPositionX, weaponPositionY, weaponPositionZ);
         _weapon.transform.localRotation = Quaternion.identity;
-        _handIk.weight = 1.0f;
 
-        _animator.SetLayerWeight(LayerIndex, MaxlayerWeight);
-
-        Invoke(nameof(SetAnimationDelay), invokeTime);
+        _rigController.Play("equip_" + _weapon.Name);
     }
 
-    private void SetAnimationDelay()
-    {
-        _overrideAnimatorController["empty_animation"] = _weapon.WeaponAnimation;
-    }
-
-    [ContextMenu("Save weapon pose")]
-    private void SaveWeaponPose()
-    {
-        GameObjectRecorder recorder = new GameObjectRecorder(gameObject);
-        recorder.BindComponentsOfType<Transform>(_weaponParent.gameObject, false);
-        recorder.BindComponentsOfType<Transform>(_weaponLeftGrip.gameObject, false);
-        recorder.BindComponentsOfType<Transform>(_weaponRightGrip.gameObject, false);
-        recorder.TakeSnapshot(0.0f);
-        recorder.SaveToClip(_weapon.WeaponAnimation);
-        UnityEditor.AssetDatabase.SaveAssets();
-    }
 }

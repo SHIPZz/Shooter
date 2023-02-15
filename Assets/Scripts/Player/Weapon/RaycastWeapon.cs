@@ -15,15 +15,23 @@ public class RaycastWeapon : MonoBehaviour
     [SerializeField] private Transform _raycastDestination;
     [SerializeField] private float _bulletSpeed = 1000.0f;
     [SerializeField] private float _bulletDrop = 0.0f;
+    [SerializeField] private GameObject _magazine;
 
-    [field: SerializeField] public AnimationClip WeaponAnimation { get; private set; }
+    [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int Damage { get; private set; }
-
-    public bool _IsFired { get; private set; } = false;
 
     private List<Bullet> _bullets = new();
     private float _accumulatedTime;
     private Ray _ray;
+
+    public WeaponRecoil Recoil { get; private set; }
+    public bool _IsFired { get; private set; } = false;
+
+
+    private void Awake()
+    {
+        Recoil = GetComponent<WeaponRecoil>();
+    }
 
     public void StartFire()
     {
@@ -62,7 +70,7 @@ public class RaycastWeapon : MonoBehaviour
         _bullets.RemoveAll(bullet => bullet.Time > MaxLifeTime);
     }
 
-    private  void SimulateBullets(float deltaTime)
+    private void SimulateBullets(float deltaTime)
     {
         _bullets.ForEach(bullet =>
         {
@@ -106,6 +114,8 @@ public class RaycastWeapon : MonoBehaviour
         Vector3 velocity = (_raycastDestination.position - _raycastOrigin.position).normalized * _bulletSpeed;
         var bullet = CreateBullet(_raycastOrigin.position, velocity);
         _bullets.Add(bullet);
+
+        Recoil.GenerateRecoil();
     }
 
     private Vector3 GetPosition(Bullet bullet)
