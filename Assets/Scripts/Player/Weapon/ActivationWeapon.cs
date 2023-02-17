@@ -1,11 +1,12 @@
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
 public class ActivationWeapon : MonoBehaviour
 {
     private const string FireOne = "Fire1";
     private const string IsHolstered = "IsHolstered";
+    private const int ActiveGunIndex = 0;
 
     [SerializeField] private Transform _crossHairTarget;
     [SerializeField] private Rig _handIk;
@@ -14,6 +15,8 @@ public class ActivationWeapon : MonoBehaviour
     [SerializeField] private Transform _weaponRightGrip;
     [SerializeField] private Animator _rigController;
     [SerializeField] private CinemachineFreeLook _playerCamera;
+    [SerializeField] private RaycastWeapon[] _equipped_weapons = new RaycastWeapon[3];
+    [SerializeField] private AmmoWidget _ammoWidget;
 
     private RaycastWeapon _weapon;
 
@@ -49,6 +52,8 @@ public class ActivationWeapon : MonoBehaviour
         }
     }
 
+    public RaycastWeapon GetActiveWeapon() => GetWeapon(ActiveGunIndex);
+
 
     public void EquipWeapon(RaycastWeapon weapon)
     {
@@ -67,6 +72,15 @@ public class ActivationWeapon : MonoBehaviour
         _weapon.transform.localRotation = Quaternion.identity;
 
         _rigController.Play("equip_" + _weapon.Name);
+        _ammoWidget.Refresh(weapon.AmmoCount);
+    }
+
+    private RaycastWeapon GetWeapon(int index)
+    {
+        if (index < 0 || index >= _equipped_weapons.Length)
+            return null;
+
+        return _equipped_weapons[index];
     }
 
 }

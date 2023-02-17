@@ -10,9 +10,9 @@ public class WeaponPickUp : MonoBehaviour
 
         if (activeWeapon)
         {
-            RaycastWeapon newWeapon = Instantiate(_weapon);
-            activeWeapon.EquipWeapon(newWeapon);
+            activeWeapon.EquipWeapon(_weapon);
         }
 
+        Destroy(gameObject);
     }
 }

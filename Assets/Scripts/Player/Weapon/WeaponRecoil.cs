@@ -1,6 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
+//[RequireComponent(typeof(CinemachineImpulseSource))]
 public class WeaponRecoil : MonoBehaviour
 {
     private const int DecreaseReturn = 1000;
@@ -9,13 +10,8 @@ public class WeaponRecoil : MonoBehaviour
     [SerializeField] private float _duration;
 
     private CinemachineFreeLook _playerCamera;
-    private CinemachineImpulseSource _cameraShake;
     private float _time;
 
-    private void Awake()
-    {
-        _cameraShake = GetComponent<CinemachineImpulseSource>();
-    }
 
     private void Update()
     {
@@ -30,7 +26,6 @@ public class WeaponRecoil : MonoBehaviour
     {
         _time = _duration;
 
-        _cameraShake.GenerateImpulse(Camera.main.transform.forward);
     }
 
     public void SetPlayerCamera(CinemachineFreeLook playerCamera)

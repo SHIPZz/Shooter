@@ -8,8 +8,6 @@ public class CharacterAiming : MonoBehaviour
     [SerializeField] private Camera _mainCamera;
 
     private float _turnSpeed = 15;
-    private float _aimDuration = 0.2f;
-
     private RaycastWeapon _weapon;
 
     private void Start()

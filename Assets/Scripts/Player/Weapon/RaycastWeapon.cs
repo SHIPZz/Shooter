@@ -15,8 +15,10 @@ public class RaycastWeapon : MonoBehaviour
     [SerializeField] private Transform _raycastDestination;
     [SerializeField] private float _bulletSpeed = 1000.0f;
     [SerializeField] private float _bulletDrop = 0.0f;
-    [SerializeField] private GameObject _magazine;
 
+    [field: SerializeField] public int AmmoCount { get; private set; }
+    [field: SerializeField] public int ClipSize { get; private set; }
+    [field: SerializeField] public GameObject Magazine { get; private set;}
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int Damage { get; private set; }
 
@@ -31,6 +33,15 @@ public class RaycastWeapon : MonoBehaviour
     private void Awake()
     {
         Recoil = GetComponent<WeaponRecoil>();
+    }
+
+    public void SetAmmoCount(int ammoCount) => AmmoCount = ammoCount;
+
+    public void SetMagazinePosition(GameObject magazine)
+    {
+        Magazine = magazine;
+        //Magazine.transform.position = magazine.transform.position;
+        //Magazine.transform.rotation = magazine.transform.rotation;
     }
 
     public void StartFire()
@@ -106,6 +117,11 @@ public class RaycastWeapon : MonoBehaviour
 
     private void FireBullet()
     {
+        if (AmmoCount <= 0)
+            return;
+
+        AmmoCount--;
+
         foreach (var effect in _effects)
         {
             effect.Emit(Count);
