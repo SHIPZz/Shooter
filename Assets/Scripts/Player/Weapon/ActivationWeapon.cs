@@ -7,7 +7,6 @@ public class ActivationWeapon : MonoBehaviour
 {
     private const string FireOne = "Fire1";
     private const string IsHolstered = "IsHolstered";
-    private const int ActiveGunIndex = 1;
 
     [SerializeField] private Transform _crossHairTarget;
     [SerializeField] private Rig _handIk;
@@ -16,7 +15,6 @@ public class ActivationWeapon : MonoBehaviour
     [SerializeField] private Transform _weaponRightGrip;
     [SerializeField] private Animator _rigController;
     [SerializeField] private CinemachineFreeLook _playerCamera;
-    [SerializeField] private RaycastWeapon[] _equippedWeapons = new RaycastWeapon[3];
     [SerializeField] private AmmoWidget _ammoWidget;
 
     private RaycastWeapon _weapon;
@@ -33,21 +31,22 @@ public class ActivationWeapon : MonoBehaviour
 
     private void Update()
     {
+        bool isHolstered = _rigController.GetBool(IsHolstered);
+
         if (_weapon)
         {
-            if (Input.GetButtonDown(FireOne))
+            if (Input.GetButtonDown(FireOne) && isHolstered == false)
                 _weapon.StartFire();
             else if (Input.GetButtonUp(FireOne))
                 _weapon.StopFire();
 
             _weapon.UpdateBullets(Time.deltaTime);
 
-            if (_weapon._IsFired)
+            if (_weapon.IsFired)
                 _weapon.UpdateFire(Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-                bool isHolstered = _rigController.GetBool(IsHolstered);
                 _rigController.SetBool(IsHolstered, !isHolstered);
             }
         }

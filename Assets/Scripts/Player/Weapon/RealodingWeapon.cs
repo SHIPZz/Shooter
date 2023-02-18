@@ -31,7 +31,7 @@ public class RealodingWeapon : MonoBehaviour
                 _rigController.SetTrigger("IsReloaded");
             }
 
-            if (weapon._IsFired)
+            if (weapon.IsFired)
                 _ammoWidget.Refresh(weapon.AmmoCount);
         }
     }

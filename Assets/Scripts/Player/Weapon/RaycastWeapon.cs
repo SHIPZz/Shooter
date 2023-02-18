@@ -27,7 +27,7 @@ public class RaycastWeapon : MonoBehaviour
     private Ray _ray;
 
     public WeaponRecoil Recoil { get; private set; }
-    public bool _IsFired { get; private set; } = false;
+    public bool IsFired { get; private set; } = false;
 
 
     private void Awake()
@@ -40,13 +40,11 @@ public class RaycastWeapon : MonoBehaviour
     public void SetMagazinePosition(GameObject magazine)
     {
         Magazine = magazine;
-        //Magazine.transform.position = magazine.transform.position;
-        //Magazine.transform.rotation = magazine.transform.rotation;
     }
 
     public void StartFire()
     {
-        _IsFired = true;
+        IsFired = true;
         _accumulatedTime = 0.0f;
         FireBullet();
     }
@@ -63,7 +61,7 @@ public class RaycastWeapon : MonoBehaviour
         }
     }
 
-    public void StopFire() => _IsFired = false;
+    public void StopFire() => IsFired = false;
 
     public void UpdateBullets(float deltaTime)
     {
