@@ -14,10 +14,8 @@ public class Player : MonoBehaviour
         _health = GetComponent<Health>();
     }
 
-    public void TakeDamage(int damage)
+    private void Update()
     {
-        _health.Decrease(damage);
-
         if (_health.Wellness <= 0)
         {
             Destroy(gameObject);

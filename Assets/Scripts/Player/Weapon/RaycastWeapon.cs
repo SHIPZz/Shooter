@@ -95,7 +95,6 @@ public class RaycastWeapon : MonoBehaviour
     private void RaycastSegment(Vector3 start, Vector3 end, Bullet bullet)
     {
         Vector3 direction = end - start;
-        float distance = direction.magnitude;
         _ray.origin = start;
         _ray.direction = direction;
 
@@ -106,11 +105,11 @@ public class RaycastWeapon : MonoBehaviour
             _hitEffect.transform.forward = hitInfo.normal;
             _hitEffect.Emit(Count);
 
-            var hitBox = hitInfo.collider.GetComponent<Health>();
+            var hitBox = hitInfo.collider.GetComponent<Enemy>();
 
             if (hitBox is not null)
             {
-                hitBox.Decrease(Damage);
+                hitBox.TakeDamage(Damage);
             }
         }
     }

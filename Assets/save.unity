@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e0158a99adcb1469418dddb543475a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Wellness>k__BackingField: 5000000
+  <Wellness>k__BackingField: 3500
 --- !u!1 &342569215
 GameObject:
   m_ObjectHideFlags: 0
@@ -13277,7 +13277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13805,7 +13805,7 @@ PrefabInstance:
     - target: {fileID: 5924302261470907932, guid: 68e38963a24dd7c429069a5a37856b0a,
         type: 3}
       propertyPath: <Wellness>k__BackingField
-      value: 400000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 8666879055669412609, guid: 68e38963a24dd7c429069a5a37856b0a,
         type: 3}

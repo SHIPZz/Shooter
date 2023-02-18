@@ -10,11 +10,6 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private TextMeshProUGUI _health;
 
-    private void Awake()
-    {
-        _player.TakeDamage(500);
-    }
-
     private void OnEnable()
     {
         _player.HealthChanged += OnValueChanged;
