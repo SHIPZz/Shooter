@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        _health= GetComponent<Health>();
+        _health = GetComponent<Health>();
     }
 
     public void TakeDamage(int damage)
@@ -20,7 +20,8 @@ public class Enemy : MonoBehaviour
         if (_health.Wellness == 0)
         {
             Destroy(gameObject);
-            OnHealthChanged?.Invoke(_health.Wellness);
         }
+
+        OnHealthChanged?.Invoke(_health.Wellness);
     }
 }

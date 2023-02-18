@@ -106,11 +106,11 @@ public class RaycastWeapon : MonoBehaviour
             _hitEffect.transform.forward = hitInfo.normal;
             _hitEffect.Emit(Count);
 
-            var hitBox = hitInfo.collider.GetComponent<Enemy>();
+            var hitBox = hitInfo.collider.GetComponent<Health>();
 
             if (hitBox is not null)
             {
-                hitBox.TakeDamage(Damage);
+                hitBox.Decrease(Damage);
             }
         }
     }

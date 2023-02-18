@@ -20,8 +20,9 @@ public class Player : MonoBehaviour
 
         if (_health.Wellness <= 0)
         {
-            HealthChanged?.Invoke(_health.Wellness);
             Destroy(gameObject);
         }
+
+        HealthChanged?.Invoke(_health.Wellness);
     }
 }
