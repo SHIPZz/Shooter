@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyStateMachine : MonoBehaviour
 {
     [SerializeField] private EnemyState _initialState;
-    [SerializeReference] private Player _target;
+    [SerializeField] private Player _target;
 
     private EnemyState _currentState;
 
