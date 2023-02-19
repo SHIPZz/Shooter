@@ -65,10 +65,8 @@ public class RealodingWeapon : MonoBehaviour
         RaycastWeapon weapon = _activeWeapon.GetActiveWeapon();
 
         _magazineHand.transform.SetParent(weapon.transform);
-
         _magazineHand.transform.localPosition = weapon.Magazine.transform.localPosition;
         _magazineHand.transform.localRotation = weapon.Magazine.transform.localRotation;
-        //_magazineHand.transform.localRotation = weapon.Magazine.transform.rotation;
 
         GameObject oldMagazine = weapon.Magazine;
         weapon.SetMagazinePosition(_magazineHand);
@@ -100,10 +98,6 @@ public class RealodingWeapon : MonoBehaviour
 
         _magazineHand = Instantiate(weapon.Magazine, _leftHand, true);
 
-        //_magazineHand = Instantiate(weapon.Magazine, weapon.transform);
-
         weapon.Magazine.SetActive(false);
-        //_magazineHand.transform.localPosition = new Vector3(0.1389f, -0.133f, 0.076f);
-        //_magazineHand.transform.localRotation = Quaternion.Euler(-7.229F, -439.875f, -322.952f);
     }
 }

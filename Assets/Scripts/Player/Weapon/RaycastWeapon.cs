@@ -18,7 +18,7 @@ public class RaycastWeapon : MonoBehaviour
 
     [field: SerializeField] public int AmmoCount { get; private set; }
     [field: SerializeField] public int ClipSize { get; private set; }
-    [field: SerializeField] public GameObject Magazine { get; private set;}
+    [field: SerializeField] public GameObject Magazine { get; private set; }
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int Damage { get; private set; }
 
@@ -28,7 +28,6 @@ public class RaycastWeapon : MonoBehaviour
 
     public WeaponRecoil Recoil { get; private set; }
     public bool IsFired { get; private set; } = false;
-
 
     private void Awake()
     {
