@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,13 +9,13 @@ public abstract class EnemyState : MonoBehaviour
 
     public void Enter(Player target)
     {
-        if(enabled is false)
+        if (enabled is false)
         {
             Target = target;
 
             enabled = true;
 
-            foreach(var transition in _transitions)
+            foreach (var transition in _transitions)
             {
                 transition.enabled = true;
                 transition.Init(target);
@@ -28,7 +27,7 @@ public abstract class EnemyState : MonoBehaviour
     {
         if (enabled)
         {
-            foreach(var transition in _transitions)
+            foreach (var transition in _transitions)
                 transition.enabled = false;
 
             enabled = false;
@@ -37,7 +36,7 @@ public abstract class EnemyState : MonoBehaviour
 
     public EnemyState GetNext()
     {
-        foreach(var transition in _transitions)
+        foreach (var transition in _transitions)
         {
             if (transition.NeedTransit)
                 return transition.TargetState;
