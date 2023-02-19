@@ -42,6 +42,5 @@ public class CharacterAiming : MonoBehaviour
             if (_weapon.IsFired)
                 _weapon.UpdateFire(Time.deltaTime);
         }
-
     }
 }

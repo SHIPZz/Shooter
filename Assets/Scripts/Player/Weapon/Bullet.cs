@@ -12,4 +12,3 @@ public class Bullet : MonoBehaviour
 
     public void AddTime(float deltaTime) => Time += deltaTime;
 }
-

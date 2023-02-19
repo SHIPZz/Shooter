@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public event Action<int> HealthChanged;
+
     private Animator _animator;
     private Health _health;
 
@@ -22,5 +23,12 @@ public class Player : MonoBehaviour
         }
 
         HealthChanged?.Invoke(_health.Wellness);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _health.Decrease(damage);
+
+        HealthChanged?.Invoke(damage);
     }
 }

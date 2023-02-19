@@ -12,7 +12,6 @@ public class WeaponRecoil : MonoBehaviour
     private CinemachineFreeLook _playerCamera;
     private float _time;
 
-
     private void Update()
     {
         if (_time > 0)
@@ -25,7 +24,6 @@ public class WeaponRecoil : MonoBehaviour
     public void GenerateRecoil()
     {
         _time = _duration;
-
     }
 
     public void SetPlayerCamera(CinemachineFreeLook playerCamera)

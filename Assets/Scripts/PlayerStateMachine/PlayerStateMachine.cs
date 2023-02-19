@@ -15,7 +15,7 @@ public class PlayerStateMachine : MonoBehaviour
     private void Update()
     {
         if (_currentState.NeedTransit)
-            Transit(_currentState.NeededState);           
+            Transit(_currentState.NeededState);
     }
 
     public void Reset(State initialState)

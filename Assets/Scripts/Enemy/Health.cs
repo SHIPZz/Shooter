@@ -11,6 +11,4 @@ public class Health : MonoBehaviour
     {
         Wellness = Mathf.Clamp(Wellness - damage, MinHealth, MaxHealth);
     }
-
-
 }

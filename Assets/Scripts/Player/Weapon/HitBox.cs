@@ -18,5 +18,4 @@ public class HitBox : MonoBehaviour
     {
         _enemy.OnHealthChanged -= OnRaycastHit;
     }
-
 }
