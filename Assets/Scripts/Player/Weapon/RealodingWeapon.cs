@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RealodingWeapon : MonoBehaviour
@@ -6,6 +7,7 @@ public class RealodingWeapon : MonoBehaviour
     private const string CommandDropMagazine = "drop_magazine";
     private const string CommandRefillMagazine = "refill_magazine";
     private const string CommandfAttachMagazine = "attach_magazine";
+    private const float Delay = 1f;
 
     [SerializeField] private Animator _rigController;
     [SerializeField] private ActivationWeapon _activeWeapon;
@@ -14,6 +16,8 @@ public class RealodingWeapon : MonoBehaviour
     [SerializeField] private AmmoWidget _ammoWidget;
 
     private GameObject _magazineHand;
+    private bool _isReloading;
+    private int _isReloaded = Animator.StringToHash("IsReloaded");
 
     private void Start()
     {
@@ -22,24 +26,28 @@ public class RealodingWeapon : MonoBehaviour
 
     private void Update()
     {
+        if (_isReloading)
+            return;
+
         RaycastWeapon weapon = _activeWeapon.GetActiveWeapon();
 
-        if (weapon)
-        {
-            if (Input.GetKeyDown(KeyCode.R) && weapon.AmmoCount <= 0)
-            {
-                _rigController.SetTrigger("IsReloaded");
-            }
+        if (weapon == null)
+            return;
 
-            if (weapon.IsFired)
-                _ammoWidget.Refresh(weapon.AmmoCount);
+        if (weapon.AmmoCount <= 0 && Input.GetKeyDown(KeyCode.R))
+        {
+            StartCoroutine(EndReloadCoroutine(Delay));
+            _isReloading = true;
+            _rigController.SetTrigger(_isReloaded);
+            return;
         }
+
+        if (weapon.IsFired)
+            _ammoWidget.Refresh(weapon.AmmoCount);
     }
 
     public void OnAnimationEvent(string eventName)
     {
-        Debug.Log(eventName);
-
         switch (eventName)
         {
             case CommandDetachMagazine:
@@ -74,7 +82,6 @@ public class RealodingWeapon : MonoBehaviour
         Destroy(oldMagazine);
 
         weapon.SetAmmoCount(weapon.ClipSize);
-        _rigController.ResetTrigger("IsReloaded");
 
         _ammoWidget.Refresh(weapon.AmmoCount);
     }
@@ -102,5 +109,12 @@ public class RealodingWeapon : MonoBehaviour
         _magazineHand = Instantiate(weapon.Magazine, _leftHand, true);
 
         weapon.Magazine.SetActive(false);
+    }
+
+    private IEnumerator EndReloadCoroutine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        _isReloading = false;
     }
 }

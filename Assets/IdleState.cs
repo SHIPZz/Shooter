@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class IdleState : StateMachineBehaviour
 {
+    private readonly int _isChasing = Animator.StringToHash("IsChasing");
+    private readonly int _isPatrolling = Animator.StringToHash("IsPatrolling");
+    private readonly float _timeToPatrole = 5;
+
     private float _timer;
     private Transform _player;
     private float _chaseRange = 8;
@@ -18,27 +22,17 @@ public class IdleState : StateMachineBehaviour
     {
         _timer += Time.deltaTime;
 
-        if (_timer > 5)
-            animator.SetBool("IsPatrolling", true);
+        if (_timer > _timeToPatrole)
+            animator.SetBool(_isPatrolling, true);
 
         float distance = Vector3.Distance(_player.position, animator.transform.position);
 
         if (distance < _chaseRange)
-            animator.SetBool("IsChasing", true);
+            animator.SetBool(_isChasing, true);
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
     }
-
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

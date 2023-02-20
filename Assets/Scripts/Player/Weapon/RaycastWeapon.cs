@@ -27,7 +27,7 @@ public class RaycastWeapon : MonoBehaviour
     private Ray _ray;
 
     public WeaponRecoil Recoil { get; private set; }
-    public bool IsFired { get; private set; } = false;
+    public bool IsFired { get; private set; } = false;                                                                              
 
     private void Awake()
     {
@@ -85,11 +85,11 @@ public class RaycastWeapon : MonoBehaviour
             Vector3 position = GetPosition(bullet);
             bullet.AddTime(deltaTime);
             Vector3 secondPosition = GetPosition(bullet);
-            RaycastSegment(position, secondPosition, bullet);
+            RaycastSegment(position, secondPosition);
         });
     }
 
-    private void RaycastSegment(Vector3 start, Vector3 end, Bullet bullet)
+    private void RaycastSegment(Vector3 start, Vector3 end)
     {
         Vector3 direction = end - start;
         _ray.origin = start;
