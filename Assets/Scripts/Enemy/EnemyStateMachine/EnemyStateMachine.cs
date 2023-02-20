@@ -27,13 +27,11 @@ public class EnemyStateMachine : MonoBehaviour
     {
         _currentState = initalState;
 
-        if (_currentState is not null)
-            _currentState.Enter(_target);
+        _currentState?.Enter(_target);
     }
 
     private void Transit(EnemyState nextState)
     {
-        if (_currentState is not null)
-            _currentState.Exit();
+        _currentState?.Exit();
     }
 }

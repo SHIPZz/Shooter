@@ -5,7 +5,7 @@ public abstract class EnemyState : MonoBehaviour
 {
     [SerializeField] private List<EnemyTransition> _transitions = new();
 
-    protected Player Target { get; private set; }
+   [field: SerializeField] protected Player Target { get; private set; }
 
     public void Enter(Player target)
     {

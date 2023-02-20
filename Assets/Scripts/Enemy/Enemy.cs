@@ -1,16 +1,18 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(Health), typeof(Animator))]
 public class Enemy : MonoBehaviour
 {
     private Health _health;
 
     public event Action<int> OnHealthChanged;
+    private Animator _animator;
 
     private void Awake()
     {
         _health = GetComponent<Health>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -29,7 +31,8 @@ public class Enemy : MonoBehaviour
 
         if (_health.Wellness == 0)
         {
-            Destroy(gameObject);
+            _animator.SetTrigger("IsDead");
+            //Destroy(gameObject);
         }
 
         OnHealthChanged?.Invoke(_health.Wellness);

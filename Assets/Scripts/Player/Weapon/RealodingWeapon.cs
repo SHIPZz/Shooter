@@ -90,6 +90,9 @@ public class RealodingWeapon : MonoBehaviour
         droppedMagazine.AddComponent<Rigidbody>();
         droppedMagazine.AddComponent<BoxCollider>();
         _magazineHand.SetActive(false);
+        float delay = 5f;
+
+        Destroy(droppedMagazine, delay);
     }
 
     private void DetachMagazine()
