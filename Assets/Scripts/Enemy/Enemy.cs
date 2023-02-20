@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Health), typeof(Animator))]
 public class Enemy : MonoBehaviour
 {
+    private readonly float _dieDelay = 10f;
+
     private Health _health;
 
     public event Action<int> OnHealthChanged;
@@ -15,16 +17,6 @@ public class Enemy : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        //if (_health.Wellness == 0)
-        //{
-        //    Destroy(gameObject);
-        //}
-
-        //OnHealthChanged?.Invoke(_health.Wellness);
-    }
-
     public void TakeDamage(int damage)
     {
         _health.Decrease(damage);
@@ -32,7 +24,7 @@ public class Enemy : MonoBehaviour
         if (_health.Wellness == 0)
         {
             _animator.SetTrigger("IsDead");
-            //Destroy(gameObject);
+            Destroy(gameObject, _dieDelay);
         }
 
         OnHealthChanged?.Invoke(_health.Wellness);
