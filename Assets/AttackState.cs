@@ -8,7 +8,7 @@ public class AttackState : StateMachineBehaviour
 
     private Transform _player;
 
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
     }

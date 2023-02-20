@@ -15,16 +15,21 @@ public class PatrolState : StateMachineBehaviour
     private List<Transform> _wayPoints = new();
     private NavMeshAgent _agent;
     private Transform _player;
+    private GameObject _gameObj;
+
+    private void Awake()
+    {
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _gameObj = GameObject.FindGameObjectWithTag("WayPoint");
+    }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
-        GameObject gameObj = GameObject.FindGameObjectWithTag("WayPoint");
         _agent = animator.GetComponent<NavMeshAgent>();
         _timer = 0;
         _agent.speed = Speed;
 
-        foreach (Transform transform in gameObj.transform)
+        foreach (Transform transform in _gameObj.transform)
             _wayPoints.Add(transform);
 
         _agent.SetDestination(_wayPoints[Random.Range(0, _wayPoints.Count)].position);

@@ -13,10 +13,14 @@ public class ChaseState : StateMachineBehaviour
     private NavMeshAgent _agent;
     private Transform _player;
 
+    private void Awake()
+    {
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _agent = animator.GetComponent<NavMeshAgent>();
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
         _agent.speed = Speed;
     }
 
@@ -28,6 +32,7 @@ public class ChaseState : StateMachineBehaviour
 
         if (distance > DistanceToOffChasing)
             animator.SetBool(_isChasing, false);
+
         if (distance < DistanceToAttack)
             animator.SetBool(_isAttacking, true);
     }

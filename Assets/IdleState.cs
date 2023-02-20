@@ -12,10 +12,14 @@ public class IdleState : StateMachineBehaviour
     private Transform _player;
     private float _chaseRange = 8;
 
+    private void Awake()
+    {
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _timer = 0;
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
