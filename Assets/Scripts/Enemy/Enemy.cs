@@ -44,6 +44,6 @@ public class Enemy : MonoBehaviour
     private void OnDisable()
     {
         Health.OnWellnessChanged -= OnHealthChanged;
-        Health.OnWellnessZeroReached += OnHealthZeroReached;
+        Health.OnWellnessZeroReached -= OnHealthZeroReached;
     }
 }
