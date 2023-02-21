@@ -5,7 +5,7 @@ public class ChaseState : StateMachineBehaviour
 {
     private const float Speed = 3.5f;
     private const float DistanceToOffChasing = 15;
-    private const float DistanceToAttack = 2;
+    private const float DistanceToAttack = 1;
 
     private static readonly int _isChasing = Animator.StringToHash("IsChasing");
     private static readonly int _isAttacking = Animator.StringToHash("IsAttacking");

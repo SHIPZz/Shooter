@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Health _playerTarget;
     [SerializeField] private int damage;
+    [SerializeField] private ParticleSystem _hitEffect;
 
     private readonly float _dieDelay = 10f;
 
@@ -26,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     public void OnHealthChanged(int health)
     {
-        
+        /*_hitEffect.Play()*/;
     }
 
     private void OnTriggerEnter(Collider other)

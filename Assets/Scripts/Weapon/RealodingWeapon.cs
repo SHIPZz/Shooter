@@ -15,9 +15,9 @@ public class RealodingWeapon : MonoBehaviour
     [SerializeField] private WeaponAnimationEvent _animationEvents;
     [SerializeField] private AmmoWidget _ammoWidget;
 
+    private static readonly int _isReloaded = Animator.StringToHash("IsReloaded");
     private GameObject _magazineHand;
     private bool _isReloading;
-    private int _isReloaded = Animator.StringToHash("IsReloaded");
 
     private void Start()
     {
@@ -81,6 +81,7 @@ public class RealodingWeapon : MonoBehaviour
 
         Destroy(oldMagazine);
 
+        _magazineHand.SetActive(true);
         weapon.SetAmmoCount(weapon.ClipSize);
 
         _ammoWidget.Refresh(weapon.AmmoCount);

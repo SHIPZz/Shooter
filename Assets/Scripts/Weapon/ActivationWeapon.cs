@@ -51,7 +51,7 @@ public class ActivationWeapon : MonoBehaviour
         }
     }
 
-    public RaycastWeapon GetActiveWeapon() => GetWeapon(ref _weapon);
+    public RaycastWeapon GetActiveWeapon() => GetWeapon(_weapon);
 
     public void EquipWeapon(RaycastWeapon weapon)
     {
@@ -73,5 +73,5 @@ public class ActivationWeapon : MonoBehaviour
         _ammoWidget.Refresh(weapon.AmmoCount);
     }
 
-    public RaycastWeapon GetWeapon(ref RaycastWeapon weapon) => weapon;
+    public RaycastWeapon GetWeapon(RaycastWeapon weapon) => weapon;
 }

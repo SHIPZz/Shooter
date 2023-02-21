@@ -104,7 +104,7 @@ public class RaycastWeapon : MonoBehaviour
 
             var hitBox = hitInfo.collider.GetComponent<Health>();
 
-            if (hitBox is not null)
+            if (hitBox != null)
             {
                 hitBox.Decrease(Damage);
             }
