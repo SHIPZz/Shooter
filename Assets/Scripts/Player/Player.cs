@@ -1,11 +1,12 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(Health))]
 public class Player : MonoBehaviour
 {
+    private readonly float _dieDelay = 5f;
     private Animator _animator;
-    public Health Health { get; private set; }  
+
+    public Health Health { get; private set; }
 
     private void Awake()
     {
@@ -15,12 +16,11 @@ public class Player : MonoBehaviour
 
     public void OnZeroHealthReached(int health)
     {
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, _dieDelay);
     }
 
     public void OnHealthChanged(int damage)
     {
-        
     }
 
     private void OnEnable()
@@ -32,6 +32,6 @@ public class Player : MonoBehaviour
     private void OnDisable()
     {
         Health.OnWellnessChanged -= OnHealthChanged;
-        Health.OnWellnessZeroReached-= OnZeroHealthReached;
+        Health.OnWellnessZeroReached -= OnZeroHealthReached;
     }
 }
