@@ -6,27 +6,27 @@ public class Enemy : MonoBehaviour
 {
     private readonly float _dieDelay = 10f;
 
-    private Health _health;
-
     public event Action<int> OnHealthChanged;
     private Animator _animator;
 
+    public Health Health { get; private set; }
+
     private void Awake()
     {
-        _health = GetComponent<Health>();
+        Health = GetComponent<Health>();
         _animator = GetComponent<Animator>();
     }
 
     public void TakeDamage(int damage)
     {
-        _health.Decrease(damage);
+        Health.Decrease(damage);
 
-        if (_health.Wellness == 0)
+        if (Health.Wellness == 0)
         {
             _animator.SetTrigger("IsDead");
             Destroy(gameObject, _dieDelay);
         }
 
-        OnHealthChanged?.Invoke(_health.Wellness);
+        OnHealthChanged?.Invoke(Health.Wellness);
     }
 }
