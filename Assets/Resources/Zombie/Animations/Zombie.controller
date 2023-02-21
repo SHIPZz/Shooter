@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780684c9e2c6a91428a683aff927a3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wayPoint: {fileID: 4709039980068760641, guid: 2bf2432886edabb488b34be62313aa0f,
+    type: 3}
 --- !u!114 &-1819753217002534226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,6 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc71fa624d14ad41899b9af760a4450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 50
+  _playerHealth: {fileID: 4622485841451415210, guid: 9b4862998e62d994ab18b5a3afb11d6f,
+    type: 3}
 --- !u!1101 &-304918975856992336
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -404,7 +409,7 @@ AnimatorStateMachine:
     m_Position: {x: 570, y: 580, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7534864357098318415}
-    m_Position: {x: 630, y: 410, z: 0}
+    m_Position: {x: 730, y: 470, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -4842347839750051443}

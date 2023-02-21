@@ -8,19 +8,19 @@ public class PatrolState : StateMachineBehaviour
     private const float TimeToStartPatrole = 2;
     private const float ChaseRange = 8;
 
-    private readonly int _isPatrolling = Animator.StringToHash("IsPatrolling");
-    private readonly int _isChasing = Animator.StringToHash("IsChasing");
+    [SerializeField] private GameObject _wayPoint;
 
+    private static readonly int _isPatrolling = Animator.StringToHash("IsPatrolling");
+    private static readonly int _isChasing = Animator.StringToHash("IsChasing");
+
+    private Player _player;
     private float _timer;
     private List<Transform> _wayPoints = new();
     private NavMeshAgent _agent;
-    private Transform _player;
-    private GameObject _gameObj;
 
     private void Awake()
     {
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
-        _gameObj = GameObject.FindGameObjectWithTag("WayPoint");
+        _player = FindObjectOfType<Player>();
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -29,7 +29,7 @@ public class PatrolState : StateMachineBehaviour
         _timer = 0;
         _agent.speed = Speed;
 
-        foreach (Transform transform in _gameObj.transform)
+        foreach (Transform transform in _wayPoint.transform)
             _wayPoints.Add(transform);
 
         _agent.SetDestination(_wayPoints[Random.Range(0, _wayPoints.Count)].position);
@@ -45,7 +45,7 @@ public class PatrolState : StateMachineBehaviour
         if (_timer > TimeToStartPatrole)
             animator.SetBool(_isPatrolling, false);
 
-        float distance = Vector3.Distance(_player.position, animator.transform.position);
+        float distance = Vector3.Distance(_player.transform.position, animator.transform.position);
 
         if (distance < ChaseRange)
             animator.SetBool(_isChasing, true);

@@ -4,31 +4,34 @@ using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(Health))]
 public class Player : MonoBehaviour
 {
-    public event Action<int> HealthChanged;
-
     private Animator _animator;
-    private Health _health;
+    public Health Health { get; private set; }  
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _health = GetComponent<Health>();
+        Health = GetComponent<Health>();
     }
 
-    private void Update()
+    public void OnZeroHealthReached(int health)
     {
-        if (_health.Wellness <= 0)
-        {
-            Destroy(gameObject);
-        }
-
-        HealthChanged?.Invoke(_health.Wellness);
+        Destroy(gameObject, 5f);
     }
 
-    public void TakeDamage(int damage)
+    public void OnHealthChanged(int damage)
     {
-        _health.Decrease(damage);
+        
+    }
 
-        HealthChanged?.Invoke(damage);
+    private void OnEnable()
+    {
+        Health.OnWellnessChanged += OnHealthChanged;
+        Health.OnWellnessZeroReached += OnZeroHealthReached;
+    }
+
+    private void OnDisable()
+    {
+        Health.OnWellnessChanged -= OnHealthChanged;
+        Health.OnWellnessZeroReached-= OnZeroHealthReached;
     }
 }

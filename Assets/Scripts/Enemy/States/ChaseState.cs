@@ -7,15 +7,15 @@ public class ChaseState : StateMachineBehaviour
     private const float DistanceToOffChasing = 15;
     private const float DistanceToAttack = 2;
 
-    private readonly int _isChasing = Animator.StringToHash("IsChasing");
-    private readonly int _isAttacking = Animator.StringToHash("IsAttacking");
+    private static readonly int _isChasing = Animator.StringToHash("IsChasing");
+    private static readonly int _isAttacking = Animator.StringToHash("IsAttacking");
 
+    private Player _player;
     private NavMeshAgent _agent;
-    private Transform _player;
 
     private void Awake()
     {
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _player = FindObjectOfType<Player>();
     }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -26,9 +26,9 @@ public class ChaseState : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _agent.SetDestination(_player.position);
+        _agent.SetDestination(_player.transform.position);
 
-        float distance = Vector3.Distance(_player.position, animator.transform.position);
+        float distance = Vector3.Distance(_player.transform.position, animator.transform.position);
 
         if (distance > DistanceToOffChasing)
             animator.SetBool(_isChasing, false);
