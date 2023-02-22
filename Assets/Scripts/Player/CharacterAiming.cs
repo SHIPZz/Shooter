@@ -3,11 +3,10 @@ using UnityEngine;
 public class CharacterAiming : MonoBehaviour
 {
     private const string FireOne = "Fire1";
-    private const float MaxRigWeight = 1.0f;
+    private const float TurnSpeed = 15;
 
     [SerializeField] private Camera _mainCamera;
 
-    private float _turnSpeed = 15;
     private RaycastWeapon _weapon;
 
     private void Start()
@@ -21,7 +20,7 @@ public class CharacterAiming : MonoBehaviour
     private void FixedUpdate()
     {
         float yawCamera = _mainCamera.transform.rotation.eulerAngles.y;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), _turnSpeed * Time.fixedDeltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), TurnSpeed * Time.fixedDeltaTime);
     }
 
     private void Update()

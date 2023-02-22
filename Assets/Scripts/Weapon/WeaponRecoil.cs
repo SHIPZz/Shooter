@@ -1,7 +1,6 @@
 using Cinemachine;
 using UnityEngine;
 
-//[RequireComponent(typeof(CinemachineImpulseSource))]
 public class WeaponRecoil : MonoBehaviour
 {
     private const int DecreaseReturn = 1000;
