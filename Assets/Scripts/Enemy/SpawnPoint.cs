@@ -7,7 +7,7 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private Transform[] _points;
     [SerializeField] private CharacterAiming _player;
 
-    private WaitForSeconds _delay = new WaitForSeconds(1.5f);
+    private WaitForSeconds _delay = new WaitForSeconds(7f);
     private Coroutine _createEnemiesCoroutine;
 
     private void Start()
