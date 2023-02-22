@@ -19,19 +19,13 @@ public class Player : MonoBehaviour
         Destroy(gameObject, _dieDelay);
     }
 
-    public void OnHealthChanged(int damage)
-    {
-    }
-
     private void OnEnable()
     {
-        Health.OnWellnessChanged += OnHealthChanged;
         Health.OnWellnessZeroReached += OnZeroHealthReached;
     }
 
     private void OnDisable()
     {
-        Health.OnWellnessChanged -= OnHealthChanged;
         Health.OnWellnessZeroReached -= OnZeroHealthReached;
     }
 }

@@ -1,8 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttackState : StateMachineBehaviour
 {
+    private static readonly int _isAttacking = Animator.StringToHash("IsAttacking");
     private readonly float _timeToOffAttack = 1;
 
     private Player _player;
@@ -18,6 +18,6 @@ public class AttackState : StateMachineBehaviour
         float distance = Vector3.Distance(_player.transform.position, animator.transform.position);
 
         if (distance > _timeToOffAttack)
-            animator.SetBool("IsAttacking", false);
+            animator.SetBool(_isAttacking, false);
     }
 }

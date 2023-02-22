@@ -5,7 +5,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Health _playerTarget;
     [SerializeField] private int damage;
-    [SerializeField] private ParticleSystem _hitEffect;
 
     private readonly float _dieDelay = 10f;
 
@@ -25,11 +24,6 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, _dieDelay);
     }
 
-    public void OnHealthChanged(int health)
-    {
-        /*_hitEffect.Play()*/;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Player player))
@@ -38,13 +32,11 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        Health.OnWellnessChanged += OnHealthChanged;
         Health.OnWellnessZeroReached += OnHealthZeroReached;
     }
 
     private void OnDisable()
     {
-        Health.OnWellnessChanged -= OnHealthChanged;
         Health.OnWellnessZeroReached -= OnHealthZeroReached;
     }
 }

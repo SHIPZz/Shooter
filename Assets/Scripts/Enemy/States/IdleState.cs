@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class IdleState : StateMachineBehaviour
 {
-
     private static readonly int _isChasing = Animator.StringToHash("IsChasing");
     private static readonly int _isPatrolling = Animator.StringToHash("IsPatrolling");
     private readonly float _timeToPatrole = 5;

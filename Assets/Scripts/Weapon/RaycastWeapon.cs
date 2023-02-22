@@ -27,7 +27,7 @@ public class RaycastWeapon : MonoBehaviour
     private Ray _ray;
 
     public WeaponRecoil Recoil { get; private set; }
-    public bool IsFired { get; private set; } = false;                                                                              
+    public bool IsFired { get; private set; } = false;
 
     private void Awake()
     {
