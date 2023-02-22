@@ -17,8 +17,6 @@ public class AttackState : StateMachineBehaviour
         animator.transform.LookAt(_player.transform);
         float distance = Vector3.Distance(_player.transform.position, animator.transform.position);
 
-        //animator.transform.rotation = Quaternion.LookRotation(_player.transform.position, Vector3.up);
-
         if (distance > _timeToOffAttack)
             animator.SetBool("IsAttacking", false);
     }
