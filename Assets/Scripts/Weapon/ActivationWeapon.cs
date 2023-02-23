@@ -18,6 +18,8 @@ public class ActivationWeapon : MonoBehaviour
 
     private RaycastWeapon _weapon;
 
+    public RaycastWeapon Weapon => _weapon;
+
     private void Start()
     {
         RaycastWeapon existingWeapon = GetComponentInChildren<RaycastWeapon>();
@@ -51,7 +53,7 @@ public class ActivationWeapon : MonoBehaviour
         }
     }
 
-    public RaycastWeapon GetActiveWeapon() => GetWeapon(_weapon);
+    public RaycastWeapon GetActiveWeapon() => Weapon;
 
     public void EquipWeapon(RaycastWeapon weapon)
     {
@@ -72,6 +74,4 @@ public class ActivationWeapon : MonoBehaviour
         _rigController.Play("equip_" + _weapon.Name);
         _ammoWidget.Refresh(weapon.AmmoCount);
     }
-
-    public RaycastWeapon GetWeapon(RaycastWeapon weapon) => weapon;
 }

@@ -10,7 +10,6 @@ public class WeaponPickUp : MonoBehaviour
 
         if (activeWeapon)
         {
-            activeWeapon.GetWeapon(_weapon);
             activeWeapon.EquipWeapon(_weapon);
         }
 
