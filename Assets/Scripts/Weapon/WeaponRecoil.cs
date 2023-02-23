@@ -6,7 +6,8 @@ public class WeaponRecoil : MonoBehaviour
     private const int DecreaseReturn = 1000;
 
     [SerializeField] private float _verticalRecoil;
-    [SerializeField] private float _duration;
+
+    private readonly float _duration = 0.1f;
 
     private CinemachineFreeLook _playerCamera;
     private float _time;

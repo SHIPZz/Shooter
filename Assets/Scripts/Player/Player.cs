@@ -14,11 +14,6 @@ public class Player : MonoBehaviour
         Health = GetComponent<Health>();
     }
 
-    public void OnZeroHealthReached(int health)
-    {
-        Destroy(gameObject, _dieDelay);
-    }
-
     private void OnEnable()
     {
         Health.OnWellnessZeroReached += OnZeroHealthReached;
@@ -27,5 +22,10 @@ public class Player : MonoBehaviour
     private void OnDisable()
     {
         Health.OnWellnessZeroReached -= OnZeroHealthReached;
+    }
+
+    public void OnZeroHealthReached(int health)
+    {
+        Destroy(gameObject, _dieDelay);
     }
 }

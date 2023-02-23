@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Health _playerTarget;
     [SerializeField] private int damage;
 
+    private static readonly int _isDead = Animator.StringToHash("IsDead");
     private readonly float _dieDelay = 10f;
 
     private Animator _animator;
@@ -16,12 +17,6 @@ public class Enemy : MonoBehaviour
     {
         Health = GetComponent<Health>();
         _animator = GetComponent<Animator>();
-    }
-
-    public void OnHealthZeroReached(int health)
-    {
-        _animator.SetTrigger("IsDead");
-        Destroy(gameObject, _dieDelay);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,4 +34,11 @@ public class Enemy : MonoBehaviour
     {
         Health.OnWellnessZeroReached -= OnHealthZeroReached;
     }
+
+    public void OnHealthZeroReached(int health)
+    {
+        _animator.SetTrigger(_isDead);
+        Destroy(gameObject, _dieDelay);
+    }
+
 }
