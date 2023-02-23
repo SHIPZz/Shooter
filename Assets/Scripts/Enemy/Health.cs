@@ -5,8 +5,13 @@ public class Health : MonoBehaviour
 {
     [field: SerializeField] public int Wellness { get; private set; }
 
-    public event Action<int> OnWellnessChanged;
-    public event Action<int> OnWellnessZeroReached;
+    public event Action<int> WellnessChanged;
+    public event Action<int> WellnessZeroReached;
+
+    private void Start()
+    {
+        WellnessChanged?.Invoke(Wellness);
+    }
 
     public void Decrease(int damage)
     {
@@ -14,9 +19,9 @@ public class Health : MonoBehaviour
 
         if (Wellness == 0)
         {
-            OnWellnessZeroReached?.Invoke(Wellness);
+            WellnessZeroReached?.Invoke(Wellness);
         }
 
-        OnWellnessChanged?.Invoke(Wellness);
+        WellnessChanged?.Invoke(Wellness);
     }
 }

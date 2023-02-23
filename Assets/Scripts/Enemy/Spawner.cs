@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private CharacterAiming _player;
 
     private WaitForSeconds _delay = new WaitForSeconds(7f);
-    private Coroutine _createEnemiesCoroutine;
+    private Coroutine _createEnemies;
 
     private void Start()
     {
@@ -19,13 +19,13 @@ public class Spawner : MonoBehaviour
     {
         StopSpawn();
 
-        _createEnemiesCoroutine = StartCoroutine(GenerateEnemies());
+        _createEnemies = StartCoroutine(GenerateEnemies());
     }
 
     private void StopSpawn()
     {
-        if (_createEnemiesCoroutine != null)
-            StopCoroutine(_createEnemiesCoroutine);
+        if (_createEnemies != null)
+            StopCoroutine(_createEnemies);
     }
 
     private IEnumerator GenerateEnemies()

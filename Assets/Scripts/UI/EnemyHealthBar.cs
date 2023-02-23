@@ -6,8 +6,18 @@ public class EnemyHealthBar : MonoBehaviour
     [SerializeField] private Slider _healthbar;
     [SerializeField] private Health _enemy;
 
-    private void Update()
+    private void OnEnable()
     {
-        _healthbar.value = _enemy.Wellness;
+        _enemy.WellnessChanged += OnWellnessChanged;
+    }
+
+    private void OnDisable()
+    {
+        _enemy.WellnessChanged -= OnWellnessChanged;
+    }
+
+    private void OnWellnessChanged(int health)
+    {
+        _healthbar.value = health;
     }
 }

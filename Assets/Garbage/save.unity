@@ -224,7 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &863588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6763,7 +6762,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &151395401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12050,7 +12048,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &173039091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18528,7 +18525,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 14.8
-  _duration: 0.1
 --- !u!114 &356170747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35280,7 +35276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &576889488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40363,7 +40358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &593018823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51447,7 +51441,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &705717441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57191,7 +57184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 14.8
-  _duration: 0.1
 --- !u!114 &778139039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62949,7 +62941,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTarget: {fileID: 0}
   damage: 0
-  _hitEffect: {fileID: 0}
 --- !u!114 &867291384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63063,7 +63054,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &869220275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75163,7 +75153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &1123198884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75973,7 +75962,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &1214442112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82265,7 +82253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &1324544125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95586,7 +95573,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716137760}
-  m_LocalRotation: {x: 0.15009706, y: -0.00000002715407, z: 0.0000000040889074, w: 0.98867124}
+  m_LocalRotation: {x: 0.15009704, y: -0.000000043924494, z: 0.0000000065519146, w: 0.98867124}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -101002,7 +100989,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &1808860190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101519,7 +101505,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 14.8
-  _duration: 0.1
 --- !u!114 &1824120889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101745,7 +101730,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &1830876511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101934,7 +101918,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 1
-  _duration: 1
 --- !u!114 &1839585625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117407,7 +117390,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 14.8
-  _duration: 0.1
 --- !u!114 &1950679453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117748,7 +117730,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &1965269797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117851,7 +117832,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTarget: {fileID: 4114070100356219170}
   damage: 50
-  _hitEffect: {fileID: 267025816}
 --- !u!114 &1972013252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123189,7 +123169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 14.8
-  _duration: 0.1
 --- !u!114 &2008247737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128588,7 +128567,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!114 &2062671069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133836,7 +133814,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTarget: {fileID: 4114070100356219170}
   damage: 50
-  _hitEffect: {fileID: 1555306747}
 --- !u!95 &2090160530
 Animator:
   serializedVersion: 5
@@ -134716,7 +134693,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 0
-  _duration: 0.1
 --- !u!114 &64883285076499150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140833,7 +140809,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!4 &1181287011528966345
 Transform:
   m_ObjectHideFlags: 0
@@ -141844,7 +141819,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 10
-  _duration: 0.1
 --- !u!1 &3291449531164046030
 GameObject:
   m_ObjectHideFlags: 0
@@ -142381,7 +142355,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _verticalRecoil: 14.8
-  _duration: 0.1
 --- !u!114 &3503391503625115663
 MonoBehaviour:
   m_ObjectHideFlags: 0

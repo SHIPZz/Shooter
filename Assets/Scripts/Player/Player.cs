@@ -16,15 +16,15 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        Health.OnWellnessZeroReached += OnZeroHealthReached;
+        Health.WellnessZeroReached += OnZeroWellnessReached;
     }
 
     private void OnDisable()
     {
-        Health.OnWellnessZeroReached -= OnZeroHealthReached;
+        Health.WellnessZeroReached -= OnZeroWellnessReached;
     }
 
-    public void OnZeroHealthReached(int health)
+    public void OnZeroWellnessReached(int health)
     {
         Destroy(gameObject, _dieDelay);
     }

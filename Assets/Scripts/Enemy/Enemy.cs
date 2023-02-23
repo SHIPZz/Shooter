@@ -19,23 +19,23 @@ public class Enemy : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        Health.WellnessZeroReached += OnWellnessZeroReached;
+    }
+
+    private void OnDisable()
+    {
+        Health.WellnessZeroReached -= OnWellnessZeroReached;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Player player))
             _playerTarget.Decrease(damage);
     }
 
-    private void OnEnable()
-    {
-        Health.OnWellnessZeroReached += OnHealthZeroReached;
-    }
-
-    private void OnDisable()
-    {
-        Health.OnWellnessZeroReached -= OnHealthZeroReached;
-    }
-
-    public void OnHealthZeroReached(int health)
+    public void OnWellnessZeroReached(int health)
     {
         _animator.SetTrigger(_isDead);
         Destroy(gameObject, _dieDelay);
