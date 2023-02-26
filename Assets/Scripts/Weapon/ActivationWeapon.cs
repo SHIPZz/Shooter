@@ -14,7 +14,7 @@ public class ActivationWeapon : MonoBehaviour
     [SerializeField] private Transform _weaponRightGrip;
     [SerializeField] private Animator _rigController;
     [SerializeField] private CinemachineFreeLook _playerCamera;
-    [SerializeField] private AmmoWidget _ammoWidget;
+    [SerializeField] private AmmoCountView _ammoCountView;
 
     private RaycastWeapon _weapon;
 
@@ -72,6 +72,6 @@ public class ActivationWeapon : MonoBehaviour
         _weapon.transform.localRotation = Quaternion.identity;
 
         _rigController.Play("equip_" + _weapon.Name);
-        _ammoWidget.Refresh(weapon.AmmoCount);
+        _ammoCountView.Refresh(weapon.AmmoCount);
     }
 }

@@ -6,25 +6,25 @@ public class Player : MonoBehaviour
     private readonly float _dieDelay = 5f;
     private Animator _animator;
 
-    public Health Health { get; private set; }
+    private Health _health;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        Health = GetComponent<Health>();
+        _health = GetComponent<Health>();
     }
 
     private void OnEnable()
     {
-        Health.WellnessZeroReached += OnZeroWellnessReached;
+        _health.ValueZeroReached += OnZeroValueReached;
     }
 
     private void OnDisable()
     {
-        Health.WellnessZeroReached -= OnZeroWellnessReached;
+        _health.ValueZeroReached -= OnZeroValueReached;
     }
 
-    public void OnZeroWellnessReached(int health)
+    public void OnZeroValueReached(int health)
     {
         Destroy(gameObject, _dieDelay);
     }

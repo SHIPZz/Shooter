@@ -8,15 +8,15 @@ public class EnemyHealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemy.WellnessChanged += OnWellnessChanged;
+        _enemy.ValueChanged += OnValueChanged;
     }
 
     private void OnDisable()
     {
-        _enemy.WellnessChanged -= OnWellnessChanged;
+        _enemy.ValueChanged -= OnValueChanged;
     }
 
-    private void OnWellnessChanged(int health)
+    private void OnValueChanged(int health)
     {
         _healthbar.value = health;
     }

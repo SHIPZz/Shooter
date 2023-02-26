@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform[] _points;
     [SerializeField] private CharacterAiming _player;
 
-    private WaitForSeconds _delay = new WaitForSeconds(7f);
+    private readonly float _delay = 7f;
     private Coroutine _createEnemies;
 
     private void Start()
@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
             {
                 Enemy newEnemy = Instantiate(_enemy, point.position, Quaternion.identity);
 
-                yield return _delay;
+                yield return new WaitForSeconds(_delay);
             }
         }
     }

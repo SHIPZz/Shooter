@@ -3,25 +3,25 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [field: SerializeField] public int Wellness { get; private set; }
+    [field: SerializeField] public int Value { get; private set; }
 
-    public event Action<int> WellnessChanged;
-    public event Action<int> WellnessZeroReached;
+    public event Action<int> ValueChanged;
+    public event Action<int> ValueZeroReached;
 
     private void Start()
     {
-        WellnessChanged?.Invoke(Wellness);
+        ValueChanged?.Invoke(Value);
     }
 
     public void Decrease(int damage)
     {
-        Wellness = Mathf.Clamp(Wellness - damage, 0, Wellness);
+        Value = Mathf.Clamp(Value - damage, 0, Value);
 
-        if (Wellness == 0)
+        if (Value == 0)
         {
-            WellnessZeroReached?.Invoke(Wellness);
+            ValueZeroReached?.Invoke(Value);
         }
 
-        WellnessChanged?.Invoke(Wellness);
+        ValueChanged?.Invoke(Value);
     }
 }

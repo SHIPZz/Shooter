@@ -13,7 +13,7 @@ public class RealodingWeapon : MonoBehaviour
     [SerializeField] private ActivationWeapon _activeWeapon;
     [SerializeField] private Transform _leftHand;
     [SerializeField] private WeaponAnimationEvent _animationEvents;
-    [SerializeField] private AmmoWidget _ammoWidget;
+    [SerializeField] private AmmoCountView _ammoWidget;
 
     private static readonly int _isReloaded = Animator.StringToHash("IsReloaded");
     private GameObject _magazineHand;

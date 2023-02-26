@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class AmmoWidget : MonoBehaviour
+public class AmmoCountView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _ammoText;
 

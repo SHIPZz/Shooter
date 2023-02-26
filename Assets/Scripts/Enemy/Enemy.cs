@@ -21,12 +21,12 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        Health.WellnessZeroReached += OnWellnessZeroReached;
+        Health.ValueZeroReached += OnValueZeroReached;
     }
 
     private void OnDisable()
     {
-        Health.WellnessZeroReached -= OnWellnessZeroReached;
+        Health.ValueZeroReached -= OnValueZeroReached;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
             _playerTarget.Decrease(damage);
     }
 
-    public void OnWellnessZeroReached(int health)
+    public void OnValueZeroReached(int health)
     {
         _animator.SetTrigger(_isDead);
         Destroy(gameObject, _dieDelay);
